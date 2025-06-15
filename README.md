@@ -1,63 +1,60 @@
 
-# Projeto Integrador – Processamento de Conteúdo e Contagem de Palavras
+# Projeto Integrador – Análise de Conteúdo e Contagem de Palavras
 
-## Descrição
+Este repositório contém cinco notebooks Jupyter, cada um implementando etapas do fluxo de coleta, limpeza, análise e exportação de dados textuais extraídos da web.
 
-Este repositório reúne cinco notebooks que implementam o processamento e análise de texto para contar palavras e identificar termos específicos em conteúdos web.
+---
 
-### Notebooks incluídos
+## Cópia_de_Garotas_Estupidas_2_FINAL.ipynb
+1. **Web scraping**: navega e coleta artigos do site “Garotas Estúpidas” até determinado limite de caracteres.
+2. **Limpeza de texto**: retira tags HTML, converte para minúsculas, remove pontuação e stopwords, aplicar tokenização básica.
+3. **Contagem de frases/expressões**: define uma lista de frases-alvo e contabiliza quantas vezes cada expressão aparece em cada texto.
+4. **Geração de nuvem de palavras**: produz nuvem de palavras com as palavras mais frequentes encontradas.
+5. **Exportação para Excel**: salva tabelas de frequências e resultados em planilha `.xlsx`.
 
-- **Cópia_de_Garotas_Estupidas_2_FINAL.ipynb**:  
-  Scraping de artigos, limpeza de texto, contagem de palavras e geração de nuvens de palavras, com exportação para Excel.
+## PalavrasPréSelecionadas_Fragântica.ipynb
+1. **Coleta de URLs**: acessa a página de lançamentos de perfumes no Fragrantica Brasil e extrai links para cada review.
+2. **Extração de reviews**: para cada URL, coleta título do perfume, autor, data e texto completo da avaliação.
+3. **Contagem de palavras-chave**: a partir de uma lista pré-selecionada de termos, computa ocorrências em cada review.
+4. **Visualização leve**: plota nuvem de palavras e exibe tabelas de contagem interativas.
+5. **Construção de DataFrame final**: consolida todas as informações em um único `pandas.DataFrame`.
 
-- **PalavrasPréSelecionadas_Fragântica.ipynb**:  
-  Web scraping de avaliações de perfumes femininos lançados em 2023 no Fragrantica Brasil; coleta de títulos, datas e textos de reviews.
+## Perfumes_Importados_Fragántica.ipynb
+1. **Importação de dados**: lê arquivo CSV/Excel contendo reviews de perfumes importados.
+2. **Normalização de texto**: remove acentos, converte a minúsculas, aplica expressões regulares para limpar caracteres indesejados.
+3. **Filtro de termos irrelevantes**: remove stopwords customizadas e palavras de pouco valor analítico.
+4. **Contagem de frequência**: calcula a frequência de cada termo relevante na base de reviews.
+5. **Gráficos de frequência**: gera gráficos de barras para as palavras mais frequentes.
 
-- **Perfumes_Importados_Fragántica.ipynb**:  
-  Análise de reviews de perfumes importados: contagem de palavras pré-selecionadas, remoção de termos indesejados e visualização de frequências.
+## Still_the_Look.ipynb
+1. **Configuração do pipeline**: importa funções de scraping, limpeza e contagem dos notebooks anteriores.
+2. **Fluxo orquestrado**:
+   - Executa scraping de artigos ou reviews.
+   - Aplica limpeza em batch nos textos coletados.
+   - Realiza contagem de termos específicos.
+   - Gera nuvens de palavras.
+3. **Exportação unificada**: consolida e salva todos os resultados em formatos estruturados.
 
-- **Still_the_Look.ipynb**:  
-  Estrutura/esqueleto do fluxo principal do projeto “Still the Look”.
+## TransformandoExcel.ipynb
+1. **Leitura de planilha Excel**: carrega dados em `pandas.DataFrame`.
+2. **Transformação de dados**: renomeia colunas, filtra linhas, calcula novas colunas conforme regras simples.
+3. **Gravação em Excel**: salva o DataFrame transformado em um novo arquivo `.xlsx`.
 
-- **TransformandoExcel.ipynb**:  
-  Rotina simples de leitura, transformação e escrita de planilhas Excel usando pandas.
+---
 
-## Pré‑requisitos
-
-- Python 3.8+  
-- Jupyter Notebook ou JupyterLab  
-- Bibliotecas Python:
-  ```bash
-  pip install pandas nltk matplotlib openpyxl requests beautifulsoup4 cloudscraper pyspark
-
-
-> Ajuste a lista de pacotes conforme as importações em cada notebook.
-
-## Como executar
-
-1. **Clone este repositório**
-
+## Como Executar
+1. Clone o repositório:
    ```bash
    git clone https://github.com/SEU_USUARIO/seu-repo.git
    cd seu-repo
-   ```
+````
 
-2. **Abra os notebooks**
+2. Instale dependências necessárias (por notebook):
 
    ```bash
-   jupyter lab   # ou jupyter notebook
+   pip install pandas nltk matplotlib openpyxl cloudscraper beautifulsoup4 requests pyspark wordcloud unidecode
    ```
+3. Abra o Jupyter Lab ou Notebook e execute os notebooks conforme a ordem acima.
 
-3. **Execute cada notebook** na ordem desejada. Cada arquivo contém instruções e comentários sobre o que é processado em cada etapa.
-
-## Estrutura básica de cada notebook
-
-1. **Importação de bibliotecas**
-2. **Definição de funções** (quando aplicável)
-3. **Leitura ou scraping de dados**
-4. **Pré‑processamento e limpeza de texto**
-5. **Análise (contagem, nuvens, visualizações)**
-6. **Exportação de resultados** (Excel ou gráficos)
-
----
+```
 ```
